@@ -161,7 +161,7 @@ class App extends Component {
             />
 
             {/* No matching url found, so creates a 404. */}
-            <Route path="/" Component={Error} />
+            <Route path="/" component={Error} />
           </Switch>
         </div>
       </BrowserRouter>
