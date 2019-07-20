@@ -7,6 +7,7 @@ import PhotoContainer from "./Components/PhotoContainer";
 import Error from "./Components/Error";
 import axios from "axios";
 import apiKey from "./config.js";
+import Photos from "./Components/Photos";
 
 class App extends Component {
   constructor() {
@@ -23,7 +24,6 @@ class App extends Component {
 
       query: ""
     };
-    // this.handleSearch = this.handleSearch.bind(this);
     this.handleQuery = this.handleQuery.bind(this);
   }
 
@@ -66,26 +66,25 @@ class App extends Component {
           // SEARCH
           if (requestType === "search") {
             if (response.data.results.length !== 0) {
-              // console.log(response);
-              //   store result in state
+              // Store result in state.
               referenceToThis.setState({
                 results: response.data.results,
-                // update search status
+                // Update search status.
                 searchStatus: "found"
               });
             } else {
               referenceToThis.setState({
                 results: [],
-                // update search status
+                // Update search status.
                 searchStatus: "notFound"
               });
             }
             // TOPICS
           } else {
             referenceToThis.setState(prevState => {
-              // Copy of topics array in state.
+              // Gets copy of topics array from state.
               let updatedTopics = prevState.topics;
-              // At index, adds current api response.
+              // At index, adds current API response.
               updatedTopics[requestType] = response.data.results;
               // Updates state.
               return { topics: updatedTopics };
@@ -98,6 +97,7 @@ class App extends Component {
         .then(function() {
           // always executed
         });
+      // Three second delay for each API request.
     }, 3000);
   };
 
@@ -113,47 +113,42 @@ class App extends Component {
             {/* TOPICS */}
             {/* Redirects '/', and displays new url.*/}
             <Route exact path="/" render={() => <Redirect to="/island" />} />
-
             <Route
               path="/island"
               render={() => (
-                <PhotoContainer data={this.state.topics[0]} title="island" />
+                <PhotoContainer title={"island pictures"}>
+                  <Photos data={this.state.topics[0]} />
+                </PhotoContainer>
               )}
             />
             <Route
               path="/sunset"
               render={() => (
-                <PhotoContainer data={this.state.topics[1]} title="sunset" />
+                <PhotoContainer title={"sunset pictures"}>
+                  <Photos data={this.state.topics[1]} />
+                </PhotoContainer>
               )}
             />
             <Route
-              path="/moon"
+              path="/waterfall"
               render={() => (
-                <PhotoContainer data={this.state.topics[2]} title="moon" />
+                <PhotoContainer title={"waterfall pictures"}>
+                  <Photos data={this.state.topics[2]} />
+                </PhotoContainer>
               )}
             />
 
             {/* SEARCH */}
-
-            {/* <Route path="/search/:query" component={Search} /> */}
-
             <Route
               path="/search/:query"
               render={props => {
-                console.log("running route:  /search/:query");
-
-                // Prevents infinite render loop.
-                if (props.match.params.query !== this.state.query) {
-                  // Sends query to App.js.
-                  // Located here so that request can be made both on submit of search form and if url is entered directly in the browser.
-                  this.handleQuery(props.match.params.query);
-                }
-
+                console.log("route:  /search/:query");
                 return (
                   <Search
                     data={this.state.results}
                     query={props.match.params.query}
-                    handleAPI={this.handleAPI}
+                    lastQuery={this.state.query}
+                    handleQuery={this.handleQuery}
                     searchStatus={this.state.searchStatus}
                   />
                 );
@@ -161,7 +156,15 @@ class App extends Component {
             />
 
             {/* No matching url found, so creates a 404. */}
-            <Route path="/" component={Error} />
+            {/* <Route path="/" component={Error} /> */}
+            <Route
+              path="/"
+              render={() => (
+                <PhotoContainer title={"Whoops!"}>
+                  <Error error={"404"} description={"Page not found."} />
+                </PhotoContainer>
+              )}
+            />
           </Switch>
         </div>
       </BrowserRouter>

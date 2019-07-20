@@ -1,10 +1,13 @@
 import React from "react";
 
-const Error = () => (
-  <div className="error">
-    <h3>404</h3>
-    <p>Page not found.</p>
-  </div>
-);
+const Error = props => {
+  const { error, description } = props;
+  return (
+    <li className="error msg">
+      <h3>{error}</h3>
+      <p>{description}</p>
+    </li>
+  );
+};
 
 export default Error;

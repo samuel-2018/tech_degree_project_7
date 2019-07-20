@@ -89,7 +89,12 @@ input {
   transform: scale(1.65);
 }
 
-.photo-container .not-found {
+/* .photo-container .not-found {
+  width: 100%;
+} */
+
+/* Centers all messages: NotFound.js, Error.js, Searching.js, Loading.js */
+.photo-container .msg {
   width: 100%;
 }
 
@@ -124,7 +129,7 @@ input {
   }
 }
 
-.error,
+/* .error,
 .not-found {
   font-size: 2rem;
-}
+} */

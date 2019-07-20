@@ -10,7 +10,7 @@ const Nav = () => (
         <NavLink to="/sunset">Sunsets</NavLink>
       </li>
       <li>
-        <NavLink to="/moon">Waterfalls</NavLink>
+        <NavLink to="/waterfall">Waterfalls</NavLink>
       </li>
     </ul>
   </nav>
