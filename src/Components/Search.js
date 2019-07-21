@@ -10,7 +10,7 @@ const Search = props => {
   // Prevents infinite render loop.
   if (query !== lastQuery) {
     // Sends query to App.js.
-    // Located here so that request can be made both on submit of search form and if url is entered directly in the browser.
+    // Request can be made both on submit of search form and if url is entered directly in the browser.
     handleQuery(query);
   }
 
