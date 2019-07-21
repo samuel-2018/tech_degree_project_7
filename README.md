@@ -1,3 +1,28 @@
+# tech_degree_project_7
+
+Project 7: React Gallery App (Tech Degree)
+
+## Description
+
+Displays images from the photo sharing site Unsplash. Users can search or click on one of the default topic buttons.
+
+This project was setup with Create React App. It uses JavaScript and JSX for building the React components, React Router for handling search and default topic routes, and Axios for fetching data.
+
+(The project’s CSS file was adapted from the file supplied for this project. Some HTML snippets were used from the supplied examples.)
+
+## How to setup app
+
+The app uses the [Unsplash API](https://unsplash.com/developers). You will need to include your own API key in a config.js file. Example file:
+
+```
+const apiKey = 'YOUR API KEY';
+export default apiKey;
+```
+
+Place the config.js file in the folder “gallery/src”.
+
+# Create React App Readme
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
