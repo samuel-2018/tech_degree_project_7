@@ -6,7 +6,7 @@ const PhotoContainer = props => {
   const { title, children } = props;
 
   return (
-    <div className="photo-container">
+    <div className="photo-container container">
       <h2>{title}</h2>
       <ul>
         {/* Inserts component here. */}
