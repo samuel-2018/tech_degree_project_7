@@ -94,7 +94,7 @@ input {
 }
 
 .photo-container ul li {
-  max-width: 220px;
+  width: 220px;
   height: 165px;
 
   overflow: hidden;
