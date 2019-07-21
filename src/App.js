@@ -49,17 +49,19 @@ class App extends Component {
   handleAPI = (query, requestType) => {
     const referenceToThis = this;
 
-    // get no more than 24 images
+    // Per project requirments, get no more than 24 images.
 
     // Unsplash limits developer API requests to 50 per hour.
+
     setTimeout(() => {
-      console.log("API Request will run.");
+      // console.log("API Request will run.");
 
       axios
         .get("https://api.unsplash.com/search/photos/", {
           params: {
             client_id: apiKey,
-            query: query
+            query: query,
+            per_page: 24
           }
         })
         .then(function(response) {
@@ -93,12 +95,10 @@ class App extends Component {
         })
         .catch(function(error) {
           console.log(error);
-        })
-        .then(function() {
-          // always executed
         });
-      // Three second delay for each API request.
-    }, 3000);
+
+      // Set API request delay here (to test 'searching' and 'loading' messages):
+    }, 1000);
   };
 
   render() {
@@ -156,7 +156,6 @@ class App extends Component {
             />
 
             {/* No matching url found, so creates a 404. */}
-            {/* <Route path="/" component={Error} /> */}
             <Route
               path="/"
               render={() => (
