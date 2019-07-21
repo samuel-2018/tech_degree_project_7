@@ -1,7 +1,11 @@
+/* ========================================
+  Base Element Styles
+===========================================*/
+
 body {
   text-align: center;
   font-family: "Open Sans", sans-serif;
-  color: #3f4850;
+  color: #391761;
 }
 
 h2 {
@@ -19,6 +23,10 @@ a {
   text-decoration: none;
 }
 
+/* ========================================
+  Search Form Styles
+===========================================*/
+
 .search-form {
   max-width: 460px;
   display: flex;
@@ -27,7 +35,7 @@ a {
 
 .search-form button {
   outline: none;
-  background-color: #438bbd;
+  background-color: #6c4a94;
   border: none;
   padding: 0px 15px;
   border-radius: 0 0.35em 0.35em 0;
@@ -37,13 +45,17 @@ a {
 input {
   font-size: 1em;
   width: 100%;
-  background-color: #edeff0;
+  background-color: #dcd2e9;
   padding: 10px 15px;
-  border: 3px solid #d7dbdf;
+  border: 3px solid #8d71af;
   border-right: none;
   border-radius: 0.35em 0 0 0.35em;
   outline: none;
 }
+
+/* ========================================
+  Main Nav Styles
+===========================================*/
 
 .main-nav li {
   width: 100%;
@@ -52,17 +64,22 @@ input {
 
 .main-nav a {
   display: block;
-  background: #438bbd;
+  background: #6c4a94;
   border-radius: 3px;
   padding: 5px;
+
   color: #fff;
 }
 
 .main-nav .active,
 .main-nav a:hover,
 .search-form button:hover {
-  background-color: #275270;
+  background-color: #512e7b;
 }
+
+/* ========================================
+  Photo Container Styles
+===========================================*/
 
 .photo-container ul {
   display: flex;
@@ -72,31 +89,87 @@ input {
   align-items: flex-start;
 }
 
+.photo-container ul figure {
+  overflow: hidden;
+}
+
 .photo-container ul li {
-  width: 220px;
+  max-width: 220px;
   height: 165px;
+
   overflow: hidden;
   margin-bottom: 15px;
 }
 
-.photo-container ul img {
-  width: 100%;
+.photo-container figure img {
   transform: scale(1.25);
   transition: transform 1.25s;
-}
-
-.photo-container li:hover img {
-  transform: scale(1.65);
-}
-
-/* .photo-container .not-found {
+  height: 100%;
   width: 100%;
-} */
+  object-fit: cover;
+}
+
+.photo-container figure:hover img {
+  transform: scale(1.65);
+  z-index: -1;
+}
+
+figure {
+  position: relative;
+  margin: 0;
+  height: 100%;
+  /* Because the images are cropped,
+  border effects have to be controlled
+  on the wrapping element. */
+  border-radius: 3px;
+}
+
+.shadow-inset {
+  /* Inset shadows have to be added as seperate layer*/
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0 0 4px 4px rgba(94, 64, 91, 0.431) inset;
+  /* Prevents it from blocking hover event.*/
+  pointer-events: none;
+}
+
+figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: left;
+  background-color: rgba(43, 43, 43, 0.76);
+  padding: 0.5rem;
+  box-sizing: border-box;
+  color: whitesmoke;
+  opacity: 0;
+  transition: 0.25s;
+}
+
+figure:hover figcaption {
+  opacity: 100;
+}
+
+a.img-link {
+  text-decoration: underline;
+  color: lightblue;
+}
 
 /* Centers all messages: NotFound.js, Error.js, Searching.js, Loading.js */
 .photo-container .msg {
+  max-width: none;
   width: 100%;
 }
+
+/* ========================================
+  Media Queries
+===========================================*/
 
 @media only screen and (max-width: 767px) {
   body {
@@ -128,8 +201,3 @@ input {
     width: 100px;
   }
 }
-
-/* .error,
-.not-found {
-  font-size: 2rem;
-} */
