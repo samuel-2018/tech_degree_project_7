@@ -7,9 +7,6 @@ class SearchForm extends Component {
     const query = event.currentTarget.search.value;
     const path = `/search/${query}`;
 
-    // Sends query to App.js.
-    // this.props.handleQuery(query);
-
     // Starts the re-routing process.
     this.props.history.push(path);
   };
