@@ -13,11 +13,21 @@ const Photo = props => {
         <div className="shadow-inset" />
 
         <figcaption>
-          <a className="img-link" href={props.imageData.urls.full}>
+          <a
+            className="img-link"
+            href={props.imageData.urls.full}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             Photo
           </a>{" "}
           by{" "}
-          <a className="img-link" href={props.imageData.user.links.html}>
+          <a
+            className="img-link"
+            href={props.imageData.user.links.html}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             {props.imageData.user.name}
           </a>{" "}
           on Unsplash
