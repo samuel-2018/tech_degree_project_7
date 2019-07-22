@@ -142,7 +142,6 @@ class App extends Component {
             <Route
               path="/search/:query"
               render={props => {
-                console.log("route:  /search/:query");
                 return (
                   <Search
                     data={this.state.results}
