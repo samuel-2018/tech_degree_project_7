@@ -1,6 +1,4 @@
-# tech_degree_project_7
-
-Project 7: React Gallery App (Tech Degree)
+# Project 7: React Gallery App (Tech Degree)
 
 ## Description
 
