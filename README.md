@@ -17,7 +17,7 @@ const apiKey = 'YOUR API KEY';
 export default apiKey;
 ```
 
-Place the config.js file in the folder “gallery/src”.
+Place the config.js file in the folder “src”.
 
 # Create React App Readme
 
